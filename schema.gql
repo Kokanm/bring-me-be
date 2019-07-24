@@ -8,7 +8,6 @@ scalar Date
 
 type Mutation {
   addUser(newUserData: NewUserInput!): User!
-  removeUser(id: String!): Boolean!
 }
 
 input NewUserInput {
@@ -19,10 +18,6 @@ input NewUserInput {
 type Query {
   user(id: String!): User!
   users(skip: Int = 0, take: Int = 25): [User!]!
-}
-
-type Subscription {
-  userAdded: User!
 }
 
 type User {
