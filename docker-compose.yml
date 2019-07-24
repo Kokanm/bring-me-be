@@ -1,0 +1,39 @@
+version: '3.7'
+services:
+  app:
+    build: .
+    command: npm start
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    expose:
+      - '3000'
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    networks:
+      - app_network
+  postgres:
+    image: postgres:alpine
+    volumes:
+      - bringme:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=bringme
+    ports:
+      - '5432:5432'
+    networks:
+      - app_network
+volumes:
+  bringme:
+    name: bringmeDB
+networks:
+  app_network:
+    external:
+      name: app_network
