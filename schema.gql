@@ -6,8 +6,41 @@
 """Date custom scalar type"""
 scalar Date
 
+type Delivery {
+  id: ID!
+  createdAt: Date!
+  updatedAt: Date!
+  item: String!
+  imageURL: String
+  description: String
+  locationFrom: String
+  locationTo: String!
+  deliverBy: Date
+  accepted: Boolean!
+  type: DeliveryType!
+}
+
+"""
+The type of the delivery. It can be "request" or "offer"
+"""
+enum DeliveryType {
+  Request
+  Offer
+}
+
 type Mutation {
   addUser(newUserData: NewUserInput!): User!
+  addDelivery(newDeliveryData: NewDeliveryInput!): Delivery!
+}
+
+input NewDeliveryInput {
+  item: String!
+  imageURL: String
+  description: String
+  locationFrom: String
+  locationTo: String!
+  deliverBy: Date
+  type: DeliveryType!
 }
 
 input NewUserInput {
@@ -18,6 +51,8 @@ input NewUserInput {
 type Query {
   user(id: String!): User!
   users(skip: Int = 0, take: Int = 25): [User!]!
+  delivery(id: String!): Delivery!
+  deliveries(skip: Int = 0, take: Int = 25): [Delivery!]!
 }
 
 type User {

@@ -5,7 +5,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './modules/user/user.module';
-import { OrderModule } from './modules/order/order.module';
+import { DeliveryModule } from './modules/delivery/delivery.module';
 
 @Module({
   imports: [
@@ -20,7 +20,7 @@ import { OrderModule } from './modules/order/order.module';
       synchronize: true,
     }),
     UserModule,
-    OrderModule,
+    DeliveryModule,
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
     }),
