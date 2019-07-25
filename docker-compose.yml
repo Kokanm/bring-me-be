@@ -2,10 +2,14 @@ version: '3.7'
 services:
   app:
     build: .
-    command: npm start
+    command: npm run start:dev
     volumes:
       - .:/usr/src/app/
       - /usr/src/app/node_modules
+    expose:
+      - '3000'
+    ports:
+      - '3000:3000'
     depends_on:
       - postgres
     links:
