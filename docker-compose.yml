@@ -4,12 +4,13 @@ services:
     build: .
     command: npm run start:dev
     volumes:
-      - .:/usr/src/app/
+      - .:/usr/src/app
       - /usr/src/app/node_modules
     expose:
       - '3000'
     ports:
       - '3000:3000'
+      - '5000:5000'
     depends_on:
       - postgres
     links:
