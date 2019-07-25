@@ -1,4 +1,4 @@
-FROM node:alpine AS base
+FROM node:12.6
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -10,5 +10,4 @@ RUN npm ci
 
 COPY . .
 
-EXPOSE 3000
 CMD [ "npm", "start" ]

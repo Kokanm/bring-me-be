@@ -1,0 +1,84 @@
+
+syntax = "proto3";
+
+package bringme;
+
+service UserService {
+  rpc FindOne (UserById) returns (User) {}
+  rpc FindAll (UsersArgs) returns (Users) {}
+  rpc Create (NewUser) returns (User) {}
+}
+
+message UserById {
+  required string id = 1;
+}
+
+message UsersArgs {
+  int32 skip = 1;
+  int32 take = 2;
+}
+
+message NewUser {
+  required string firstName = 1;
+  required string lastName = 2;
+}
+
+message User {
+  string id = 1;
+  string createdAt = 2;
+  string updatedAt = 3;
+  string firstName = 4;
+  string lastName = 5;
+}
+
+message Users {
+  repeated User users = 1;
+}
+
+service DeliveryService {
+  rpc FindOne (DeliveryById) returns (Delivery) {}
+  rpc FindAll (DeliveriesArgs) returns (Deliveriess) {}
+  rpc Create (NewDelivery) returns (Delivery) {}
+}
+
+message DeliveryById {
+  string id = 1;
+}
+
+message DeliveriesArgs {
+  int32 skip = 1;
+  int32 take = 2;
+}
+
+message NewDelivery {
+  required string item = 1;
+  string imageURL = 2;
+  string description = 3;
+  string locationFrom = 4;
+  required string locationTo = 5;
+  string deliverBy = 6;
+  required DeliveryType type = 7;
+}
+
+message Delivery {
+  string id = 1;
+  string createdAt = 2;
+  string updatedAt = 3;
+  string item = 4;
+  string imageURL = 5;
+  string description = 6;
+  string locationFrom = 7;
+  string locationTo = 8;
+  string deliverBy = 9;
+  bool accepted = 10;
+  DeliveryType type = 11;
+}
+
+message Deliveriess {
+  repeated Delivery deliveries = 1;
+}
+
+enum DeliveryType {
+  Request = 0;
+  Offer = 1;
+}
