@@ -4,5 +4,4 @@ bases:
   - ../../base/bring-me-be
   - ../../base/linkerd
   - ../../base/postgres
-
-namespace: ns-dj
+namespace: bring-me-be
