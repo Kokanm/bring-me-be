@@ -26,6 +26,7 @@ import { DeliveryModule } from './modules/delivery/delivery.module';
     GraphQLModule.forRootAsync({
       useFactory: () => ({
         autoSchemaFile: 'schema.gql',
+        playground: true,
       }),
     }),
   ],
