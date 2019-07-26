@@ -32,7 +32,7 @@ spec:
         name: postgres-bring-me-claim
       spec:
         accessModes: 
-          - ReadWriteOnce
+          - ReadWriteMany
         resources:
           requests:
             storage: 3Gi
