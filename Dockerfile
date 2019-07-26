@@ -7,7 +7,8 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 RUN npm ci
+RUN npm i grpc
 
-COPY . .
+COPY . /usr/src/app
 
 CMD [ "npm", "start" ]

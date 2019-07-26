@@ -6,6 +6,6 @@ export const grpcClientOptions: ClientOptions = {
   options: {
     url: '0.0.0.0:5000',
     package: 'bringme',
-    protoPath: join(__dirname, './modules/bringme.proto'),
+    protoPath: join(__dirname, 'protos/bringme.proto'),
   },
 };
