@@ -52,7 +52,7 @@ type Query {
   user(id: String!): User!
   users(skip: Int = 0, take: Int = 25): [User!]!
   delivery(id: String!): Delivery!
-  deliveries(skip: Int = 0, take: Int = 25): [Delivery!]!
+  deliveries(skip: Int = 0, take: Int = 25, type: DeliveryType!): [Delivery!]!
 }
 
 type User {

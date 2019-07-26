@@ -12,8 +12,8 @@ import { DeliveryModule } from './modules/delivery/delivery.module';
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
         type: 'postgres',
-        host: process.env.POSTGRES_HOST || '5432',
-        port: Number(process.env.POSTGRES_PORT),
+        host: process.env.POSTGRES_HOST,
+        port: Number(process.env.POSTGRES_PORT) || 5432,
         username: process.env.POSTGRES_USER,
         password: process.env.POSTGRES_PASS,
         database: process.env.POSTGRES_NAME,
@@ -27,6 +27,7 @@ import { DeliveryModule } from './modules/delivery/delivery.module';
       useFactory: () => ({
         autoSchemaFile: 'schema.gql',
         playground: true,
+        introspection: true,
       }),
     }),
   ],

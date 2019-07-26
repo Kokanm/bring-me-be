@@ -10,17 +10,17 @@ export class NewDeliveryInput {
 
   @Field({ nullable: true })
   @IsOptional()
-  imageURL: string;
+  imageURL?: string;
 
   @Field({ nullable: true })
   @IsOptional()
   @MaxLength(500)
-  description: string;
+  description?: string;
 
   @Field({ nullable: true })
   @IsOptional()
   @MaxLength(100)
-  locationFrom: string;
+  locationFrom?: string;
 
   @Field()
   @MaxLength(100)
@@ -28,7 +28,7 @@ export class NewDeliveryInput {
 
   @Field(type => Date, { nullable: true })
   @IsOptional()
-  deliverBy: Date;
+  deliverBy?: Date;
 
   @Field(type => DeliveryType)
   type: DeliveryType;
