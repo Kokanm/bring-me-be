@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: postgres-db-config
 data:
-  POSTGRES_DB: bringmebe
-  POSTGRES_USER: bringmebeprod
+  POSTGRES_DB: bringmebeprod
+  POSTGRES_USER: bringmebe
   POSTGRES_PASSWORD: supersecret123
   PGDATA: /var/lib/postgresql/data/pgdata
