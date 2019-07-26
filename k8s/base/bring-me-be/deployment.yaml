@@ -31,7 +31,7 @@ spec:
           value: bringmebeprod
         - name: POSTGRES_PASS
           value: supersecret123
-        - name: POSTGRES_DB
+        - name: POSTGRES_NAME
           value: bringmebeprod
         - name: POSTGRES_HOST
           value: postgres

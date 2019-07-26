@@ -11,7 +11,7 @@ import { DeliveryModule } from './modules/delivery/delivery.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.POSTGRES_HOST,
+      host: process.env.POSTGRES_HOST || '5432',
       port: Number(process.env.POSTGRES_PORT),
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASS,
