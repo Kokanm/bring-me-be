@@ -23,6 +23,7 @@ import { DeliveryModule } from './modules/delivery/delivery.module';
     DeliveryModule,
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
+      playground: true,
     }),
   ],
   controllers: [AppController],
