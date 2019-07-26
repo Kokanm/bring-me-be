@@ -28,7 +28,7 @@ spec:
         - name: NODE_ENV
           value: 'production'
         - name: POSTGRES_USER
-          value: bringmebe
+          value: bringmebeprod
         - name: POSTGRES_PASSWORD
           value: supersecret123
         - name: POSTGRES_DB
