@@ -7,8 +7,10 @@ spec:
     matchLabels:
       app: bring-me-be
   template:
-    env:
-      - name: NODE_ENV
-        value: 'development'
-      - name: POSTGRES_NAME
-        value: development
+    containers:
+    - name: bring-me-be
+      env:
+        - name: NODE_ENV
+          value: 'development'
+        - name: POSTGRES_NAME
+          value: development
