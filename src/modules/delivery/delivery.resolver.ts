@@ -25,6 +25,8 @@ export class DeliveryResolver {
 
   @Query(returns => [Delivery], { name: 'deliveries' })
   getDeliveries(@Args() deliveriesArgs: DeliveriesArgs): Promise<Delivery[]> {
+    console.warn('Resolver');
+    console.warn(deliveriesArgs);
     return this.deliveryRpc.findAll(deliveriesArgs);
   }
 

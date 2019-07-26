@@ -48,6 +48,7 @@ message DeliveryById {
 message DeliveriesArgs {
   int32 skip = 1;
   int32 take = 2;
+  DeliveryType type = 3;
 }
 
 message NewDelivery {

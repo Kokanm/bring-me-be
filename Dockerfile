@@ -11,4 +11,4 @@ RUN npm i grpc
 
 COPY . /usr/src/app
 
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "start:prod" ]
