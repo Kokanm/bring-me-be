@@ -1,14 +1,19 @@
-import { Max, Min } from 'class-validator';
+import { Max, IsOptional } from 'class-validator';
 import { ArgsType, Field, Int } from 'type-graphql';
+import { DeliveryType } from '../../../common/enums/DeliveryType.enum';
 
 @ArgsType()
 export class DeliveriesArgs {
   @Field(type => Int)
-  @Min(0)
-  skip: number = 0;
+  @IsOptional()
+  skip?: number;
 
   @Field(type => Int)
-  @Min(1)
-  @Max(50)
-  take: number = 25;
+  @IsOptional()
+  @Max(100)
+  take?: number;
+
+  @Field(type => DeliveryType)
+  @IsOptional()
+  type?: DeliveryType;
 }

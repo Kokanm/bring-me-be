@@ -9,21 +9,25 @@ import { DeliveryModule } from './modules/delivery/delivery.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.POSTGRES_HOST || '5432',
-      port: Number(process.env.POSTGRES_PORT),
-      username: process.env.POSTGRES_USER,
-      password: process.env.POSTGRES_PASS,
-      database: process.env.POSTGRES_NAME,
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true,
+    TypeOrmModule.forRootAsync({
+      useFactory: () => ({
+        type: 'postgres',
+        host: process.env.POSTGRES_HOST || '5432',
+        port: Number(process.env.POSTGRES_PORT),
+        username: process.env.POSTGRES_USER,
+        password: process.env.POSTGRES_PASS,
+        database: process.env.POSTGRES_NAME,
+        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        synchronize: true,
+      }),
     }),
     UserModule,
     DeliveryModule,
-    GraphQLModule.forRoot({
-      autoSchemaFile: 'schema.gql',
-      playground: true,
+    GraphQLModule.forRootAsync({
+      useFactory: () => ({
+        autoSchemaFile: 'schema.gql',
+        playground: true,
+      }),
     }),
   ],
   controllers: [AppController],
