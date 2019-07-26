@@ -3,14 +3,52 @@ kind: Deployment
 metadata:
   name: bring-me-be
 spec:
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: bring-me-be
+  strategy:
+    rollingUpdate:
+      maxSurge: 10%
+      maxUnavailable: 0%
+    type: RollingUpdate
   template:
-    containers:
-    - name: bring-me-be
-      env:
+    metadata:
+      labels:
+        app: bring-me-be
+    spec:
+      containers:
+      - image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+        imagePullPolicy: IfNotPresent
+        name: bring-me-be
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        env:
         - name: NODE_ENV
           value: 'development'
+        - name: POSTGRES_USER
+          value: bringmebeprod
+        - name: POSTGRES_PASS
+          value: supersecret123
         - name: POSTGRES_NAME
           value: development
+        - name: POSTGRES_HOST
+          value: postgres
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 2
+          failureThreshold: 3
+          timeoutSeconds: 2
+      imagePullSecrets:
+          - name: gitlab
