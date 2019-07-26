@@ -29,7 +29,7 @@ spec:
           value: 'production'
         - name: POSTGRES_USER
           value: bringmebeprod
-        - name: POSTGRES_PASSWORD
+        - name: POSTGRES_PASS
           value: supersecret123
         - name: POSTGRES_DB
           value: bringmebeprod
