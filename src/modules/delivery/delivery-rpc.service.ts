@@ -35,6 +35,8 @@ export class DeliveryRpc implements OnModuleInit {
   async findAll(deliveriesArgs: DeliveriesArgs): Promise<Delivery[]> {
     console.warn('RPC');
     console.warn(deliveriesArgs);
+    console.warn('adadam');
+    console.warn(process.env.NODE_ENV);
     const { deliveries } = await this.deliveryService
       .findAll(deliveriesArgs)
       .toPromise();
