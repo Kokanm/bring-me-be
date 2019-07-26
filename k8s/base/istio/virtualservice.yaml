@@ -1,0 +1,14 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: bring-me-be
+spec:
+  hosts:
+  - bring-me-be.summer.cloudweekend.kiwi
+  gateways:
+  - gateway.istio-system.svc.cluster.local
+  http:
+  - route:
+    - destination:
+        host: bring-me-be.bring-me-be.svc.cluster.local

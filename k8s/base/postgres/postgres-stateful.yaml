@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+spec:
+  replicas: 1
+  serviceName: "postgres"
+  selector:
+    matchLabels:
+      service: postgres
+  template:
+    metadata:
+      labels:
+        service: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:latest
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: postgres-db-config
+          ports:
+            - name: tcp-postgres
+              containerPort: 5432
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgres-bring-me-claim
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-bring-me-claim
+      spec:
+        accessModes: 
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 3Gi
+
+           

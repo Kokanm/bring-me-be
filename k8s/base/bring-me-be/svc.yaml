@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: bring-me-be
+spec:
+  selector:
+    app: bring-me-be
+  ports:
+    - name: http-bringmebe
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

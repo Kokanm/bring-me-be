@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-next-upstream-tries: "1"
+    nginx.ingress.kubernetes.io/proxy-next-upstream: "error http_500 http_502 http_503 invalid_header"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "5"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,X-WHOIAM,X-WHOIAM-SESSION,X-FORTER,X-Application,authorization,KW-Partner-Token,KW-User-Token,KW-Simple-Token,X-API-Version"
+  name: ingress-bring-me-be
+spec:
+  rules:
+  - host: ${KUSTOMIZE_REVIEW_APP_INGRESS_DOMAIN} # any domain *.linkerd.summer.cloudweekend.kiwi
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: bring-me-be-${CI_COMMIT_REF_SLUG}
+          servicePort: 3000

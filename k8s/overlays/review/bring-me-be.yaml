@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bring-me-be
+spec:
+  selector:
+    matchLabels:
+      app: bring-me-be
+  template:
+    env:
+      - name: NODE_ENV
+        value: 'development'
+      - name: POSTGRES_DB
+        value: development

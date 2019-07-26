@@ -1,0 +1,14 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: bring-me-be
+spec:
+  hosts:
+  - ${KUSTOMIZE_REVIEW_APP_INGRESS_DOMAIN}
+  gateways:
+  - gateway.istio-system.svc.cluster.local
+  http:
+  - route:
+    - destination:
+        host: bring-me-be-${CI_COMMIT_REF_SLUG}.bring-me-be.svc.cluster.local

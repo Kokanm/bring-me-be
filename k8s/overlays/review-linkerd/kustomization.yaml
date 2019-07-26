@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+  - ../../base/bring-me-be
+  - ../../base/linkerd
+
+namespace: bring-me-be
+
+nameSuffix: -${CI_COMMIT_REF_SLUG}
+
+# app.gitlab.com/review as a label to enable easier filtering
+commonLabels:
+  app.gitlab.com/review: ${CI_PROJECT_ID}_${CI_COMMIT_REF_SLUG}
+
+patches:
+  - ingress.yaml

@@ -1,0 +1,19 @@
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  KW_APP_NAME: bring-me-be
+  KW_SCOPE: "bring-me-be-"
+
+deploy-linkerd:
+  extends: deploy alpha
+  variables:
+    KW_APP_NAME: bring-me-be-linkerd
+    KW_SCOPE: "linkerd-bring-me-be-"
+    KUSTOMIZE_OVERLAY_NAME: "alpha-linkerd"
+
+include:
+  - remote: https://kw-summer-camp-artifacts.s3-eu-west-1.amazonaws.com/latest/gitlab-ci/docker-build.yml
+  - remote: https://kw-summer-camp-artifacts.s3-eu-west-1.amazonaws.com/latest/gitlab-ci/gke-deploy.yml

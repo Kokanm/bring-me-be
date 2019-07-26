@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+  - ../../base/bring-me-be
+  - ../../base/istio
+  - ../../base/postgres
+
+namespace: bring-me-be
+
+# app.gitlab.com/review as a label to enable easier filtering
+# commonLabels:
+#  app.gitlab.com/review: alpha
