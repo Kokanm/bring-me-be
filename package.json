@@ -29,7 +29,7 @@
     "apollo-server-express": "^2.7.1",
     "graphql": "^14.4.2",
     "graphql-tools": "^4.0.5",
-    "grpc": "^1.22.2",
+    "grpc": "^1.24.9",
     "pg": "^7.11.0",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
